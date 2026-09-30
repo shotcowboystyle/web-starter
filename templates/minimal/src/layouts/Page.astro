@@ -1,0 +1,56 @@
+---
+import '@shift-css/core';
+
+import { SITE_DESCRIPTION, SITE_TITLE } from '~/consts';
+
+interface Props {
+  title: string;
+  description?: string;
+  backLink?: string;
+}
+
+const { title, description = SITE_DESCRIPTION, backLink } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <meta
+      name="description"
+      content={description}
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <title>{title === SITE_TITLE ? title : `${title} · ${SITE_TITLE}`}</title>
+  </head>
+  <body>
+    <main class="container prose">
+      {
+        backLink && (
+          <a
+            class="back-link"
+            href={backLink}
+          >
+            &larr; Back
+          </a>
+        )
+      }
+      <h1>{title}</h1>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    padding-block: var(--space-8, 3rem);
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+
+import { SITE_TITLE } from '~/consts';
+import Page from '~/layouts/Page.astro';
+import { sortByDate } from '~/lib/sort-by-date';
+
+const experiments = sortByDate(await getCollection('experiments'));
+---
+
+<Page title={SITE_TITLE}>
+  <ul>
+    {
+      experiments.map((entry) => (
+        <li>
+          <a href={`/${entry.id}/`}>{entry.data.title}</a>
+          <time datetime={entry.data.pubDate.toISOString()}>{entry.data.pubDate.toLocaleDateString('en-US', { dateStyle: 'medium' })}</time>
+          {entry.data.description && <p>{entry.data.description}</p>}
+        </li>
+      ))
+    }
+  </ul>
+</Page>

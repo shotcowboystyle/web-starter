@@ -1,0 +1,55 @@
+{
+  "name": "minimal-site",
+  "version": "0.1.0",
+  "description": "Minimal Astro starter: markdown pages, one layout, Shift CSS.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "pnpm build && wrangler deploy",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "astro": "astro",
+    "check": "ultracite check",
+    "fix": "ultracite fix",
+    "lint:md": "markdownlint-cli2 --config .config/markdownlint.jsonc",
+    "lint:md:fix": "markdownlint-cli2 --config .config/markdownlint.jsonc --fix",
+    "lint:yaml": "mise exec -- yamllint -c .config/yamllint.yml .",
+    "lint:actions": "mise exec -- actionlint .github/workflows/*.yml",
+    "lint:spell": "cspell --config .config/cspell.json --no-progress .",
+    "lint:commit": "commitlint --config .config/commitlint.config.ts --edit",
+    "lint:all": "pnpm run check && pnpm run lint:md && pnpm run lint:yaml && pnpm run lint:actions && pnpm run lint:spell",
+    "prepare": "lefthook install",
+    "preinstall": "node -e \"if(process.env.CI == 'true') {console.log('Skipping preinstall...')} else {process.exit(1)}\" || npx -y only-allow pnpm"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@shift-css/core": "^0.8.3",
+    "astro": "^7.0.6",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@commitlint/types": "^21.2.3",
+    "@playwright/test": "^1.59.1",
+    "cspell": "^9.3.2",
+    "lefthook": "2.1.14",
+    "markdownlint-cli2": "0.23.3",
+    "oxfmt": "0.71.0",
+    "oxlint": "1.86.0",
+    "typescript": "^6.0.3",
+    "ultracite": "7.12.1",
+    "vitest": "^4.1.5",
+    "wrangler": "^4.107.0"
+  },
+  "engines": {
+    "node": ">=26.5.0"
+  },
+  "packageManager": "pnpm@12.5.1"
+}

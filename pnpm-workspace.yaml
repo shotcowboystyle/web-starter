@@ -1,0 +1,9 @@
+# Root is the create-web-starter CLI package only; templates/* are standalone
+# projects fetched by giget, not workspace members.
+packages: []
+
+saveExact: true
+savePrefix: ""
+
+allowBuilds:
+  lefthook: true
