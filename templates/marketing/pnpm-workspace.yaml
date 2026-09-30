@@ -1,0 +1,13 @@
+# Not a workspace — pnpm reads build allowances and save settings from here.
+saveExact: true
+savePrefix: ''
+
+overrides:
+  'yaml': '2.8.3'
+  'esbuild': '0.25.0'
+
+allowBuilds:
+  esbuild: true
+  lefthook: true
+  sharp: false
+  workerd: true

@@ -8,19 +8,26 @@
     "html",
     "css",
     "bash",
-    "markdown"
+    "markdown",
+    "lorem-ipsum"
   ],
   "words": [
     "astro",
     "astrojs",
+    "Bento",
+    "bento",
     "betterleaks",
     "clack",
     "clsx",
+    "Codebook",
+    "codebook",
     "commitlint",
+    "Fira",
     "frontmatter",
     "giget",
     "gladtek",
     "Gladtek",
+    "gtag",
     "jsdom",
     "jsonc",
     "lefthook",
@@ -30,17 +37,30 @@
     "lucide",
     "lychee",
     "markdownlint",
+    "noopener",
+    "noreferrer",
     "OKLCH",
+    "opensource",
     "oxfmt",
     "oxlint",
+    "Qwik",
+    "RGAA",
+    "RYBBIT",
+    "rybbit",
+    "Shiki",
     "shotcowboystyle",
-    "spellbook",
     "Spellbook",
+    "spellbook",
     "tailwindcss",
+    "techstack",
     "ultracite",
+    "umami",
+    "UMAMI",
+    "WCAG",
     "workerd",
     "wrangler",
-    "yamllint"
+    "yamllint",
+    "zerojs"
   ],
   "ignorePaths": [
     ".astro",
@@ -52,5 +72,8 @@
     "public",
     "templates",
     "test-results"
+  ],
+  "ignoreRegExpList": [
+    "/youtubeId: .*/"
   ]
 }

@@ -1,0 +1,48 @@
+---
+import { useTranslations } from '~/i18n/utils';
+import HeroCentered from './hero/HeroCentered.astro';
+import HeroSplit from './hero/HeroSplit.astro';
+import HeroCinematic from './hero/HeroCinematic.astro';
+import HeroTerminal from './hero/HeroTerminal.astro';
+import type { HeroCta, HeroStat } from './hero/types';
+
+interface Props {
+  variant?: 'centered' | 'split' | 'cinematic' | 'terminal';
+  badge?: string;
+  title?: string;
+  highlight?: string;
+  description?: string;
+  primaryCta?: HeroCta;
+  secondaryCta?: HeroCta;
+  stats?: HeroStat[];
+}
+
+const t = useTranslations('en');
+
+const {
+  variant = 'centered',
+  badge = t['hero.badge'],
+  title = t['hero.title'],
+  highlight = t['hero.highlight'],
+  description = t['hero.subtitle'],
+  primaryCta = { href: "/blog", text: t['hero.getStarted'] },
+  secondaryCta = { href: "/about", text: t['hero.learnMore'] },
+  stats = [
+    { label: t['hero.stats.pages'], value: "111+" },
+    { label: t['hero.stats.languages'], value: "4" },
+    { label: t['hero.stats.uptime'], value: "99.9%" },
+  ]
+} = Astro.props;
+
+const heroProps = { badge, description, highlight, primaryCta, secondaryCta, stats, title };
+
+const variants = {
+  centered: HeroCentered,
+  cinematic: HeroCinematic,
+  split: HeroSplit,
+  terminal: HeroTerminal,
+};
+
+const HeroComponent = variants[variant as keyof typeof variants] ?? HeroCentered;
+---
+<HeroComponent {...heroProps} />

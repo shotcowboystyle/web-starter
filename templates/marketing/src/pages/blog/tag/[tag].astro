@@ -1,0 +1,83 @@
+---
+export const prerender = true;
+import Layout from '~/layouts/Layout.astro';
+import PageHeader from '~/components/layout/PageHeader.astro';
+import BlogCard from '~/components/blog/BlogCard.astro';
+import Container from '~/components/ui/Container.astro';
+import Grid from '~/components/ui/Grid.astro';
+import { getCollection } from 'astro:content';
+import { useTranslations } from '~/i18n/utils';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+
+  // Group posts by tag slug
+  const tagMap = new Map();
+
+  allPosts.forEach((post) => {
+    (post.data.tags || []).forEach((tag) => {
+      const tagSlug = tag.toLowerCase().replaceAll(/[^a-z0-9]+/g, '-').replaceAll(/(^-|-$)/g, '');
+      if (!tagSlug) {return;}
+
+      if (!tagMap.has(tagSlug)) {
+        tagMap.set(tagSlug, {
+          posts: [],
+          tagName: tag, // Use the first encounter as the display name,
+        });
+      }
+      tagMap.get(tagSlug).posts.push(post);
+    });
+  });
+
+  return [...tagMap.entries()].map(([tagSlug, data]) => (
+    {
+      params: { tag: tagSlug },
+      props: { 
+          posts: data.posts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()), 
+          tagName: data.tagName 
+      },
+    }
+  ));
+}
+
+const { posts, tagName } = Astro.props;
+const t = useTranslations('en');
+---
+
+<Layout title={`Tag: ${tagName} - Blog`} description={`Articles tagged with ${tagName}`}>
+  <Container class="pt-32">
+    <a href="/blog" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="m15 18-6-6 6-6"/></svg>
+        {t['blog.back']}
+    </a>
+  </Container>
+
+  <PageHeader 
+      title={tagName}
+      description={`Articles tagged with ${tagName}`}
+  />
+
+  <Container as="section" class="pb-24">
+      {posts.length > 0 ? (
+          <Grid cols={3} class="mb-16">
+            {posts.map((post: CollectionEntry<'blog'>) => (
+              <BlogCard 
+                 title={post.data.title}
+                 description={post.data.description}
+                 pubDate={post.data.pubDate}
+                 heroImage={post.data.heroImage}
+                 slug={`/blog/${post.id.replace(/\.[^/.]+$/, "")}`}
+                 isVideo={post.data.isVideo}
+                 author={post.data.author}
+                 audioUrl={post.data.audioUrl}
+              />
+            ))}
+          </Grid>
+      ) : (
+          <div class="text-center py-20">
+              <p class="text-xl text-muted-foreground">{t['blog.noPosts'] || "No posts found for this tag."}</p>
+          </div>
+      )}
+  </Container>
+</Layout>
