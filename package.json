@@ -24,8 +24,5 @@
   "packageManager": "pnpm@12.5.1",
   "devDependencies": {
     "lefthook": "2.1.14"
-  },
-  "scripts": {
-    "prepare": "lefthook install"
   }
 }

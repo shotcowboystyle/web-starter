@@ -57,6 +57,14 @@ templates/
 
 Templates are deliberately standalone (own configs, lockfiles, workflows) so a giget fetch delivers a working project. Cost: DX config changes must be synced across `templates/*` and root by hand.
 
+## Working on this repo
+
+```sh
+mise install
+pnpm install
+pnpm exec lefthook install   # once; no prepare script (it would block pnpm dlx from GitHub)
+```
+
 ## Local CLI development
 
 ```sh
