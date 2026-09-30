@@ -1,16 +1,7 @@
 {
   "version": "0.2",
   "language": "en",
-  "dictionaries": [
-    "typescript",
-    "node",
-    "npm",
-    "html",
-    "css",
-    "bash",
-    "markdown",
-    "lorem-ipsum"
-  ],
+  "dictionaries": ["typescript", "node", "npm", "html", "css", "bash", "markdown", "lorem-ipsum"],
   "words": [
     "astro",
     "astrojs",
