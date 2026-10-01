@@ -4,6 +4,5 @@ savePrefix: ''
 
 allowBuilds:
   esbuild: true
-  lefthook: true
   sharp: false
   workerd: true

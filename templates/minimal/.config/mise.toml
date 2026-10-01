@@ -8,3 +8,10 @@ actionlint = '1.7.12'
 shellcheck = '0.11.0' # actionlint shells out to it for `run:` blocks
 yamllint = '1.38.0'
 betterleaks = '1.8.1'
+# Git hooks. Not on npm; builds from source on first install (~4 min).
+'cargo:betterhook-cli' = '0.1.0'
+
+[hooks]
+# Re-runs after every `mise install`, so hooks point at the current binary
+# path (betterhook writes its absolute path into .git/hooks).
+postinstall = '[ -n "$CI" ] || betterhook install --no-unit'

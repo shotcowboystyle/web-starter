@@ -21,8 +21,5 @@
     "url": "git+https://github.com/shotcowboystyle/web-starter.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@12.5.1",
-  "devDependencies": {
-    "lefthook": "2.1.14"
-  }
+  "packageManager": "pnpm@12.5.1"
 }

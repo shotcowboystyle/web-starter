@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+# Git hooks only; skip its ~4 min source build.
+env:
+  MISE_DISABLE_TOOLS: cargo:betterhook-cli
+
 jobs:
   test:
     name: Lint, Test & Build
