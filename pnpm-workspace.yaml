@@ -4,6 +4,3 @@ packages: []
 
 saveExact: true
 savePrefix: ""
-
-allowBuilds:
-  lefthook: true

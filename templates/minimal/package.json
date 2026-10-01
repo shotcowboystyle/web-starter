@@ -23,7 +23,6 @@
     "lint:spell": "cspell --config .config/cspell.json --no-progress .",
     "lint:commit": "commitlint --config .config/commitlint.config.ts --edit",
     "lint:all": "pnpm run check && pnpm run lint:md && pnpm run lint:yaml && pnpm run lint:actions && pnpm run lint:spell",
-    "prepare": "lefthook install",
     "preinstall": "node -e \"if(process.env.CI == 'true') {console.log('Skipping preinstall...')} else {process.exit(1)}\" || npx -y only-allow pnpm"
   },
   "dependencies": {
@@ -39,7 +38,6 @@
     "@commitlint/types": "^21.2.3",
     "@playwright/test": "^1.59.1",
     "cspell": "^9.3.2",
-    "lefthook": "2.1.14",
     "markdownlint-cli2": "0.23.3",
     "oxfmt": "0.71.0",
     "oxlint": "1.86.0",

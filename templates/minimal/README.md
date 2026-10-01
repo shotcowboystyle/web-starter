@@ -41,4 +41,4 @@ Edit `src/consts.ts` for the site title and description.
 
 ## Toolchain
 
-Managed by [mise](https://mise.jdx.dev) (`.config/mise.toml`): node, pnpm, actionlint, shellcheck, yamllint, betterleaks. Run `mise install` once. Git hooks (lefthook) install on `pnpm install`.
+Managed by [mise](https://mise.jdx.dev) (`.config/mise.toml`): node, pnpm, actionlint, shellcheck, yamllint, betterleaks, betterhook. Run `mise install` once; it also installs the git hooks (betterhook).

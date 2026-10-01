@@ -35,4 +35,4 @@ The adapter is picked at build time by the `ADAPTER` env var (default `node`). `
 
 ## Toolchain
 
-mise pins node, pnpm, actionlint, shellcheck, yamllint, betterleaks (`.config/mise.toml`). Git hooks (lefthook) install on `pnpm install`: ultracite fix, markdownlint, yamllint, actionlint, cspell, betterleaks staged scan, commitlint.
+mise pins node, pnpm, actionlint, shellcheck, yamllint, betterleaks, betterhook (`.config/mise.toml`). Git hooks (betterhook) install on `mise install`: ultracite fix, markdownlint, yamllint, actionlint, cspell, betterleaks staged scan, commitlint.

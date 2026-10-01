@@ -1,0 +1,25 @@
+[meta]
+version = 1
+
+[hooks.pre-commit.jobs.markdownlint]
+run = 'pnpm dlx markdownlint-cli2 --config .config/markdownlint.jsonc "*.md" "create/**/*.md"'
+glob = ['**/*.md']
+
+[hooks.pre-commit.jobs.yamllint]
+run = 'mise exec -- yamllint -c .config/yamllint.yml .'
+glob = ['**/*.yml', '**/*.yaml']
+
+[hooks.pre-commit.jobs.actionlint]
+run = 'mise exec -- actionlint .github/workflows/*.yml'
+glob = ['.github/workflows/*.{yml,yaml}']
+
+[hooks.pre-commit.jobs.cspell]
+run = 'pnpm dlx cspell --config .config/cspell.json --no-progress --no-must-find-files {staged_files}'
+
+[hooks.pre-commit.jobs.betterleaks]
+run = 'mise exec -- betterleaks git --pre-commit --staged'
+
+# betterhook 0.1 does not forward git's hook args, so no {1}; bare --edit
+# reads the message file git just wrote (worktree-aware).
+[hooks.commit-msg.jobs.commitlint]
+run = 'pnpm dlx commitlint --config .config/commitlint.config.ts --edit'

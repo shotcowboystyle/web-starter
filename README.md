@@ -38,7 +38,7 @@ pnpm dev
 ## DX suite (both flavors)
 
 - **Format/lint**: ultracite (oxlint + oxfmt)
-- **Hooks**: lefthook — ultracite fix, markdownlint, yamllint, actionlint, cspell, betterleaks (staged secret scan), commitlint
+- **Hooks**: betterhook (worktree-aware) — ultracite fix, markdownlint, yamllint, actionlint, cspell, betterleaks (staged secret scan), commitlint
 - **Tests**: Vitest (unit) + Playwright (e2e)
 - **CI**: lint + test + build + Lighthouse CI + betterleaks + lychee link check
 - **Toolchain**: mise pins node, pnpm, actionlint, shellcheck, yamllint, betterleaks
@@ -60,9 +60,8 @@ Templates are deliberately standalone (own configs, lockfiles, workflows) so a g
 ## Working on this repo
 
 ```sh
-mise install
+mise install   # also installs git hooks (betterhook) via mise postinstall
 pnpm install
-pnpm exec lefthook install   # once; no prepare script (it would block pnpm dlx from GitHub)
 ```
 
 ## Local CLI development

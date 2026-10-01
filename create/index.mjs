@@ -141,7 +141,7 @@ if (adapter !== 'node') {
 
 await writeFile(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
 
-// git init so lefthook's prepare hook has a repo to install into.
+// git init so mise postinstall (betterhook install) has a repo to install into.
 try {
   execFileSync('git', ['rev-parse', '--is-inside-work-tree'], { cwd: target, stdio: 'ignore' });
 } catch {
